@@ -15,7 +15,7 @@
 }
 
 .primary {
-	color: var(--caption-color);
+	color: var(--white);
 	background-color: var(--primary);
 }
 
@@ -24,13 +24,13 @@
 }
 
 .ghost {
-	color: var(--text-color);
+	color: var(--arsenic);
 	border: 1px solid var(--border-color);
 	background: none;
 }
 
 .ghost:hover {
-	color: var(--caption-color);
+	color: var(--white);
 	background-color: var(--primary);
 }
 
@@ -47,5 +47,5 @@
 
 .primary svg,
 .ghost:hover svg {
-	fill: var(--caption-color);
+	fill: var(--white);
 }

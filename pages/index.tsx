@@ -1,10 +1,25 @@
 import React, { FC, useState } from 'react';
+import { GetStaticProps } from 'next';
+import axios from 'axios';
 import { Button, Chip, Paragraph, Rating, Title } from '../components';
+import { withLayout } from '../hoks/withLayout';
+import { IMenuItem } from '../interfaces/menu.interface';
 
-const Home: FC = (): JSX.Element => {
+interface HomeProps extends Record<string, unknown> {
+	menu: IMenuItem[];
+	firstCategory: number;
+}
+
+const Home: FC<HomeProps> = (props): JSX.Element => {
+	const { menu } = props;
 	const [testRating, setTestRating] = useState(4);
 	return (
 		<>
+			<ul>
+				{menu.map((item) => (
+					<li key={item._id.secondCategory}>{item._id.secondCategory}</li>
+				))}
+			</ul>
 			<Title level="1">Hello world</Title>
 			<Paragraph size="l">Large</Paragraph>
 			<Paragraph>Medium</Paragraph>
@@ -44,4 +59,21 @@ const Home: FC = (): JSX.Element => {
 	);
 };
 
-export default Home;
+export default withLayout(Home);
+
+export const getStaticProps: GetStaticProps<HomeProps> = async () => {
+	const firstCategory = 0;
+	const { data: menu } = await axios.post<IMenuItem[]>(
+		process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
+		{
+			firstCategory,
+		}
+	);
+
+	return {
+		props: {
+			menu,
+			firstCategory,
+		},
+	};
+};
