@@ -26,22 +26,22 @@
 }
 
 .red {
-	color: var(--caption-color);
-	background: var(--red);
+	color: var(--white);
+	background: var(--chip-color-red);
 
 	font-weight: bold;
 }
 
 .gray {
-	color: var(--caption-color);
-	background: var(--gray);
+	color: var(--white);
+	background: var(--chip-color-gray);
 
 	font-weight: bold;
 }
 
 .green {
-	color: var(--green);
-	background: var(--green-light);
+	color: var(--chip-text-green);
+	background: var(--chip-color-green);
 
 	font-weight: bold;
 }
