@@ -2,7 +2,7 @@ import React, { FC, useState } from 'react';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
 import { Button, Chip, Paragraph, Rating, Title } from '../components';
-import { withLayout } from '../hoks/withLayout';
+import { withLayout } from '../hocs/withLayout';
 import { IMenuItem } from '../interfaces/menu.interface';
 
 interface HomeProps extends Record<string, unknown> {

@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import { MenuProps } from './Menu.types';
-import styles from './Menu.module.css';
+import { FirstLevelMenu } from './FirstLevelMenu/FirstLevelMenu';
 
-export const Menu: FC<MenuProps> = (): JSX.Element => {
+export const Menu: FC = (): JSX.Element => {
 	return (
-		<nav className={styles.menu} role="navigation">
-			Menu
+		<nav role="navigation">
+			<FirstLevelMenu />
 		</nav>
 	);
 };
