@@ -1,0 +1,18 @@
+.thirdLevelMenu {
+	display: block;
+
+	margin-bottom: 10px;
+
+	cursor: pointer;
+
+	color: var(--menu-level-color);
+	outline-offset: -1px;
+
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.thirdLevelMenuActive,
+.thirdLevelMenu:hover {
+	color: var(--primary);
+}
