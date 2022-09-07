@@ -14,7 +14,7 @@
 }
 
 .footer a:hover {
-	color: var(--bright-gray);
+	color: var(--bright-grey);
 }
 
 @media (max-width: 765px) {

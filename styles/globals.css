@@ -22,7 +22,8 @@ a {
 /* https://www.color-name.com/ */
 :root {
 	--electric-red: #DE0000;
-	--bright-gray: #EBEBEB;
+	--gray-x11: #BBB;
+	--bright-grey: #EBEBEB;
 	--nickel: #6C7077;
 	--arsenic: #3B434E;
 	--white: #FFF;
@@ -36,12 +37,12 @@ a {
 	--primary-hover: var(--majorelle-blue);
 	--text-color: var(--arsenic);
 	--caption-color: var(--white);
-	--border-color: var(--bright-gray);
+	--border-color: var(--bright-grey);
 	--error-color: var(--electric-red);
 	--menu-level-color: var(--nickel);
 	--menu-block-border-color: var(--gainsboro);
 	--chip-color-red: var(--electric-red);
-	--chip-color-gray: var(--ucla-blue);
+	--chip-color-grey: var(--ucla-blue);
 	--chip-color-green: var(--aero-blue);
 	--chip-text-green: var(--green-crayola);
 	--font-family: "Noto Sans Display", sans-serif;
