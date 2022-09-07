@@ -4,7 +4,7 @@ import cn from 'classnames';
 import { ThirdLevelMenuProps } from './ThirdLevelMenu.types';
 
 import styles from './ThirdLevelMenu.module.css';
-import {useRouter} from 'next/router';
+import { useRouter } from 'next/router';
 
 export const ThirdLevelMenu: FC<ThirdLevelMenuProps> = (props): JSX.Element => {
 	const { pages, route } = props;
@@ -13,13 +13,11 @@ export const ThirdLevelMenu: FC<ThirdLevelMenuProps> = (props): JSX.Element => {
 	return (
 		<>
 			{pages.map((page) => (
-				<Link
-					key={`third-level-${page._id}}`}
-					href={`/${route}/${page.alias}`}
-				>
+				<Link key={`third-level-${page._id}}`} href={`/${route}/${page.alias}`}>
 					<span
 						className={cn(styles.thirdLevelMenu, {
-							[styles.thirdLevelMenuActive]: `/${route}/${page.alias}` === router.asPath,
+							[styles.thirdLevelMenuActive]:
+								`/${route}/${page.alias}` === router.asPath,
 						})}
 					>
 						{page.category}

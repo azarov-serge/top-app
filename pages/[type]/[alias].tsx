@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { GetStaticPaths, GetStaticProps, GetStaticPropsContext } from 'next';
+import Head from 'next/head';
 import { ParsedUrlQuery } from 'querystring';
 import axios from 'axios';
 
@@ -11,6 +12,7 @@ import {
 } from '../../interfaces/toppage.interface';
 import { IProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
+import { TopPageContent } from '../../page-components/TopPageContent';
 
 interface TopPageProps extends Record<string, unknown> {
 	firstCategory: TopLevelCategory;
@@ -20,9 +22,24 @@ interface TopPageProps extends Record<string, unknown> {
 }
 
 const TopPage: FC<TopPageProps> = (props): JSX.Element => {
-	const { products } = props;
+	const { firstCategory, page, products } = props;
 
-	return <>{products && products.length}</>;
+	return (
+		<>
+			<Head>
+				<title>{page.metaTitle}</title>
+				<meta name="description" content={page.metaDescription} />
+				<meta property="og:title" content={page.metaTitle} />
+				<meta property="og:description" content={page.metaDescription} />
+				<meta property="og:type" content="article" />
+			</Head>
+			<TopPageContent
+				firstCategory={firstCategory}
+				page={page}
+				products={products}
+			/>
+		</>
+	);
 };
 
 export default withLayout(TopPage);
@@ -65,7 +82,6 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
 		(item) => item.route === params.type
 	);
 
-
 	if (!firstCategoryItem) {
 		return {
 			notFound: true,
@@ -79,11 +95,11 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
 				firstCategory: firstCategoryItem.id,
 			}
 		);
-	
+
 		const { data: page } = await axios.get<ITopPageModel>(
 			process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias
 		);
-	
+
 		const { data: products } = await axios.post<IProductModel[]>(
 			process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find',
 			{
@@ -91,7 +107,7 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
 				limit: 10,
 			}
 		);
-		
+
 		return {
 			props: {
 				firstCategory: firstCategoryItem.id,

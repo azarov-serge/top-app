@@ -48,7 +48,7 @@ const Home: FC<HomeProps> = (props): JSX.Element => {
 				Medium Red
 			</Chip>
 			<Chip color="green"> Small Green</Chip>
-			<Chip color="gray">Small Grey</Chip>
+			<Chip color="grey">Small Grey</Chip>
 			<Rating
 				className="rating"
 				isEditable={true}

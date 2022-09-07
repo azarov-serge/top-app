@@ -7,5 +7,5 @@ export interface ChipProps
 	> {
 	size?: 's' | 'm';
 	href?: string;
-	color?: 'ghost' | 'red' | 'gray' | 'green' | 'primary';
+	color?: 'ghost' | 'red' | 'grey' | 'green' | 'primary';
 }
