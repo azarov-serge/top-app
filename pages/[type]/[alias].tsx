@@ -13,6 +13,7 @@ import {
 import { IProductModel } from '../../interfaces/product.interface';
 import { firstLevelMenu } from '../../helpers/helpers';
 import { TopPageContent } from '../../page-components/TopPageContent';
+import { url } from '../../helpers/url';
 
 interface TopPageProps extends Record<string, unknown> {
 	firstCategory: TopLevelCategory;
@@ -89,19 +90,16 @@ export const getStaticProps: GetStaticProps<TopPageProps> = async (
 	}
 
 	try {
-		const { data: menu } = await axios.post<IMenuItem[]>(
-			process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-			{
-				firstCategory: firstCategoryItem.id,
-			}
-		);
+		const { data: menu } = await axios.post<IMenuItem[]>(url.topPage.find, {
+			firstCategory: firstCategoryItem.id,
+		});
 
 		const { data: page } = await axios.get<ITopPageModel>(
-			process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/byAlias/' + params.alias
+			url.topPage.byAlias + params.alias
 		);
 
 		const { data: products } = await axios.post<IProductModel[]>(
-			process.env.NEXT_PUBLIC_DOMAIN + '/api/product/find',
+			url.product.find,
 			{
 				category: page.category,
 				limit: 10,

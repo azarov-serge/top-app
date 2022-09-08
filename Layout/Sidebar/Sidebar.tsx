@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
+import { Search } from '../../components';
 import Logo from '../../assets/icons/logo.svg';
 import { Menu } from '../Menu/Menu';
 import { SidebarProps } from './Sidebar.types';
@@ -10,6 +11,7 @@ export const Sidebar: FC<SidebarProps> = (props): JSX.Element => {
 	return (
 		<div className={cn(className, styles.sidebar)} {...restProps}>
 			<Logo className={styles.logo} />
+			<Search />
 			<Menu />
 		</div>
 	);

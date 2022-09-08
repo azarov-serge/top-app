@@ -1,9 +1,18 @@
 import React, { FC, useState } from 'react';
 import { GetStaticProps } from 'next';
 import axios from 'axios';
-import { Button, Chip, Paragraph, Rating, Title } from '../components';
+import {
+	Button,
+	Chip,
+	Input,
+	Paragraph,
+	Rating,
+	Textarea,
+	Title,
+} from '../ui-kit';
 import { withLayout } from '../hocs/withLayout';
 import { IMenuItem } from '../interfaces/menu.interface';
+import { url } from '../helpers/url';
 
 interface HomeProps extends Record<string, unknown> {
 	menu: IMenuItem[];
@@ -55,6 +64,8 @@ const Home: FC<HomeProps> = (props): JSX.Element => {
 				rating={testRating}
 				setRating={setTestRating}
 			/>
+			<Input placeholder="Enter text" />
+			<Textarea placeholder="Enter text" />
 		</>
 	);
 };
@@ -63,12 +74,9 @@ export default withLayout(Home);
 
 export const getStaticProps: GetStaticProps<HomeProps> = async () => {
 	const firstCategory = 0;
-	const { data: menu } = await axios.post<IMenuItem[]>(
-		process.env.NEXT_PUBLIC_DOMAIN + '/api/top-page/find',
-		{
-			firstCategory,
-		}
-	);
+	const { data: menu } = await axios.post<IMenuItem[]>(url.topPage.find, {
+		firstCategory,
+	});
 
 	return {
 		props: {

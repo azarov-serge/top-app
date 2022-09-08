@@ -22,18 +22,22 @@ a {
 /* https://www.color-name.com/ */
 :root {
 	--electric-red: #DE0000;
+	--salmon: #FC836D;
 	--gray-x11: #BBB;
+	--ghost-white: #F9F8FF;
+	--quick-silver: #A4A4A4;
 	--bright-grey: #EBEBEB;
 	--nickel: #6C7077;
 	--arsenic: #3B434E;
 	--white: #FFF;
-	--violets-are-blue: #7653FC;
+	--medium-slate-blue: #7351F5;
 	--majorelle-blue: #6344DF;
 	--gainsboro: #DFDFDF;
 	--ucla-blue: #51648C;
 	--aero-blue: #C8F8E4;
+	--salem: #127A4F;
 	--green-crayola: #1DC37E;
-	--primary: var(--violets-are-blue);
+	--primary: var(--medium-slate-blue);
 	--primary-hover: var(--majorelle-blue);
 	--text-color: var(--arsenic);
 	--caption-color: var(--white);
@@ -44,6 +48,6 @@ a {
 	--chip-color-red: var(--electric-red);
 	--chip-color-grey: var(--ucla-blue);
 	--chip-color-green: var(--aero-blue);
-	--chip-text-green: var(--green-crayola);
+	--chip-text-green: var(--salem);
 	--font-family: "Noto Sans Display", sans-serif;
 }
