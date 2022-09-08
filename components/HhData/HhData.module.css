@@ -21,7 +21,7 @@
 }
 
 .salary > div {
-	border-right: 1px solid var(--gray-light);
+	border-right: 1px solid var(--border-color);
 }
 
 .salary > div:last-child {
@@ -61,7 +61,7 @@
 }
 
 .filled circle {
-	fill: var(--electric-red);
+	fill: var(--salmon);
 }
 
 @media screen and (max-width: 1200px) {

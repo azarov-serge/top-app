@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import RateIcon from '../../assets/icons/star-circle-fill.svg';
 import { priceRu } from '../../helpers/helpers';
-import { Card } from '../Card';
+import { Card } from '../../ui-kit';
 import { HhDataProps } from './HhData.types';
 import styles from './HhData.module.css';
 

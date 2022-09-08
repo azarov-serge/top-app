@@ -1,14 +1,22 @@
-import React, { FC, useReducer } from 'react';
-import { Advantages, Chip, HhData, Sort, Title } from '../../components';
-import {SortEnum} from '../../components/Sort/Sort.types';
+import React, { FC, useEffect, useReducer } from 'react';
+import { Chip, Title } from '../../ui-kit';
+import { Advantages, HhData, Product, Sort } from '../../components';
+import { SortEnum } from '../../components/Sort/Sort.types';
 import { TopLevelCategory } from '../../interfaces/toppage.interface';
 import { TopPageContentProps } from './TopPageContent.types';
+import { sortReducer } from './reducers/sort.reducer';
 import styles from './TopPageContent.module.css';
-import {sortReducer} from './reducers/sort.reducer';
 
 export const TopPageContent: FC<TopPageContentProps> = (props) => {
 	const { page, products, firstCategory } = props;
-	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(sortReducer, { products, sort: SortEnum.Rating });
+	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(
+		sortReducer,
+		{ products, sort: SortEnum.Rating }
+	);
+
+	useEffect(() => {
+		dispathSort({ type: 'reset', initialState: products });
+	}, [products]);
 
 	const setSort = (sort: SortEnum) => {
 		dispathSort({ type: sort });
@@ -32,7 +40,9 @@ export const TopPageContent: FC<TopPageContentProps> = (props) => {
 
 			<div>
 				{sortedProducts &&
-					sortedProducts.map((product) => <p key={product._id}>{product.title}</p>)}
+					sortedProducts.map((product) => (
+						<Product key={product._id} product={product} />
+					))}
 			</div>
 
 			{firstCategory === TopLevelCategory.COURCES &&
