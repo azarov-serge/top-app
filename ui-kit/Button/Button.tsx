@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import cn from 'classnames';
+import { motion } from 'framer-motion';
 import ArrowIcon from '../../assets/icons/arrow.svg';
 import { ButtonProps } from './Button.types';
 
@@ -18,13 +19,17 @@ export const Button: FC<ButtonProps> = (props): JSX.Element => {
 	const arrowClassName = cn(styles.arrow, { [styles.down]: arrow === 'down' });
 
 	return (
-		<button className={buttonClassName} {...restProps}>
+		<motion.button
+			whileHover={{ scale: 1.05 }}
+			className={buttonClassName}
+			{...restProps}
+		>
 			{children}
-			{arrow !== 'none' && (
+			{arrow != 'none' && (
 				<span className={arrowClassName}>
 					<ArrowIcon />
 				</span>
 			)}
-		</button>
+		</motion.button>
 	);
 };

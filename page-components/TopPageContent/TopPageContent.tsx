@@ -1,4 +1,5 @@
 import React, { FC, useEffect, useReducer } from 'react';
+import { useReducedMotion } from 'framer-motion';
 import { Chip, Title } from '../../ui-kit';
 import { Advantages, HhData, Product, Sort } from '../../components';
 import { SortEnum } from '../../components/Sort/Sort.types';
@@ -9,6 +10,7 @@ import styles from './TopPageContent.module.css';
 
 export const TopPageContent: FC<TopPageContentProps> = (props) => {
 	const { page, products, firstCategory } = props;
+	const shouldReduceMotion = useReducedMotion();
 	const [{ products: sortedProducts, sort }, dispathSort] = useReducer(
 		sortReducer,
 		{ products, sort: SortEnum.Rating }
@@ -38,10 +40,15 @@ export const TopPageContent: FC<TopPageContentProps> = (props) => {
 				<Sort sort={sort} setSort={setSort} />
 			</div>
 
-			<div>
+			<div role="list">
 				{sortedProducts &&
 					sortedProducts.map((product) => (
-						<Product key={product._id} product={product} />
+						<Product
+							role="listitem"
+							layout={shouldReduceMotion ? false : true}
+							key={product._id}
+							product={product}
+						/>
 					))}
 			</div>
 

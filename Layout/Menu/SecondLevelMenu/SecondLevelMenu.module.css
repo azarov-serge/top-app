@@ -16,6 +16,8 @@
 }
 
 .secondBlock {
+	overflow: hidden;
+
 	margin-top: 15px;
 	margin-left: 12px;
 	padding: 0 0 0 32px;
@@ -23,17 +25,4 @@
 	list-style: none;
 
 	border-left: 1px solid var(--menu-block-border-color);
-}
-
-.secondLevelMenuBlock {
-	display: none;
-	overflow: hidden;
-
-	padding: 0;
-
-	list-style: none;
-}
-
-.secondLevelMenuBlockOpened {
-	display: block;
 }

@@ -21,7 +21,7 @@ export const Search: FC<SearchProps> = (props) => {
 	};
 
 	const handleKeyDown = (evt: KeyboardEvent) => {
-		if (evt.key == 'Enter') {
+		if (evt.key === 'Enter') {
 			goToSearch();
 		}
 	};
@@ -30,7 +30,7 @@ export const Search: FC<SearchProps> = (props) => {
 		setSearch(evt.target.value);
 
 	return (
-		<div className={cn(className, styles.search)} {...restProps}>
+		<form className={cn(className, styles.search)} role="search" {...restProps}>
 			<Input
 				className={styles.input}
 				placeholder="Поиск..."
@@ -38,9 +38,13 @@ export const Search: FC<SearchProps> = (props) => {
 				onChange={handleChange}
 				onKeyDown={handleKeyDown}
 			/>
-			<Button className={styles.button} onClick={goToSearch}>
+			<Button
+				className={styles.button}
+				onClick={goToSearch}
+				arial-label="Искать по сайту"
+			>
 				<SearchIcon />
 			</Button>
-		</div>
+		</form>
 	);
 };
