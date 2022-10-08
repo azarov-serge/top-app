@@ -4,16 +4,18 @@ import cn from 'classnames';
 import { AppContext } from '../../../context/app.context';
 import { SecondLevelMenu } from '../SecondLevelMenu/SecondLevelMenu';
 import { firstLevelMenu } from '../../../helpers/helpers';
+import type { FirstLevelMenuProps } from './FirstLevelMenu.types';
 
 import styles from './FirstLevelMenu.module.css';
 
-export const FirstLevelMenu: FC = (): JSX.Element => {
+export const FirstLevelMenu: FC<FirstLevelMenuProps> = (props): JSX.Element => {
+	const { setAnnounce } = props;
 	const { firstCategory } = useContext(AppContext);
 
 	return (
-		<>
+		<ul className={styles.firstLevelMenuList}>
 			{firstLevelMenu.map((item) => (
-				<div key={item.route}>
+				<li key={item.route} aria-expanded={item.id == firstCategory}>
 					<Link href={`/${item.route}`}>
 						<a>
 							<div
@@ -27,10 +29,10 @@ export const FirstLevelMenu: FC = (): JSX.Element => {
 						</a>
 					</Link>
 					{item.id === firstCategory && (
-						<SecondLevelMenu menuItem={item} />
+						<SecondLevelMenu menuItem={item} setAnnounce={setAnnounce} />
 					)}
-				</div>
+				</li>
 			))}
-		</>
+		</ul>
 	);
 };
