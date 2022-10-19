@@ -25,6 +25,10 @@ interface TopPageProps extends Record<string, unknown> {
 const TopPage: FC<TopPageProps> = (props): JSX.Element => {
 	const { firstCategory, page, products } = props;
 
+	if (!page || !products) {
+		return <></>;
+	}
+
 	return (
 		<>
 			<Head>

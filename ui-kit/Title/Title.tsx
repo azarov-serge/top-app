@@ -6,7 +6,7 @@ import styles from './Title.module.css';
 
 
 export const Title: FC<TitleProps> = (props): JSX.Element => {
-	const { level, children, className, ...restProps } = props;
+	const { level = 1, children, className, ...restProps } = props;
 	const Tag: ElementType = `h${level}`;
 	const tagClassName = cn(styles[Tag], className);
 
